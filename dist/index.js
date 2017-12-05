@@ -48,12 +48,12 @@ class SnooHooks {
         const files = await this.findHooksFiles(hooksDir);
         const filteredFiles = files.filter((file) => !file.includes('.map'));
         fs.existsSync(`./${path.join(hooksDir, files[0])}`);
-        const hooks = await bluebird.Promise.all(filteredFiles.map((file) => Promise.resolve().then(() => require(`./${path.join(hooksDir, file)}`))));
+        const hooks = await bluebird.Promise.all(filteredFiles.map((file) => Promise.resolve().then(() => require(`${path.join(process.cwd(), hooksDir, file)}`))));
         this.jobs = hooks.map((hook) => new SnooJob(hook.default));
     }
     async findHooksFiles(hooksDir) {
         const readdir = bluebird.promisify(fs.readdir);
-        const files = await readdir(`dist/${hooksDir}`);
+        const files = await readdir(path.join(process.cwd(), hooksDir));
         return files;
     }
 }
