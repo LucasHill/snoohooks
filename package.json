@@ -1,0 +1,28 @@
+{
+  "name": "snoohooks",
+  "version": "1.0.0-beta.0",
+  "description": "A straightforward bot scheduler/helper for reddit.",
+  "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LucasHill/snoohooks"
+  },
+  "scripts": {
+    "start": "tsc && node dist/example.app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lucas Hill",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "node-schedule": "^1.2.5",
+    "snoowrap": "^1.15.1",
+    "typescript": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.18",
+    "@types/node": "^8.0.53",
+    "@types/node-schedule": "^1.2.1",
+    "@types/snoowrap": "^1.14.3"
+  }
+}
