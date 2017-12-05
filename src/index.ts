@@ -5,11 +5,11 @@ import * as bluebird from 'bluebird';
 import * as path from 'path';
 import * as schedule from 'node-schedule';
 
-interface SnooHooksConfig {
+export interface SnooHooksConfig {
   hooksDir?: string
 }
 
-interface SnooDirective {
+export interface SnooDirective {
   subreddits: string[]
   interval: string  
   submissionMatcher?: RegExp[]
