@@ -1,28 +1,26 @@
+/// <reference types="snoowrap" />
 import { SnoowrapOptions, Comment, Submission } from 'snoowrap';
 import * as Snoowrap from 'snoowrap';
-
-declare class SnooHooks {
-  constructor(config: SnooHooks.SnooHooksConfig)
+export interface SnooHooksConfig {
+    hooksDir?: string;
 }
-
-declare namespace SnooHooks {
-  interface SnooHooksConfig {
-    hooksDir?: string
-  }
-
-  interface SnooDirective {
-    subreddits: string[]
-    interval: string  
-    submissionMatcher?: RegExp[]
-    commentMatcher?: RegExp[]
-  }
-
-  interface SnooHook {
-    redditClientConfig(): SnoowrapOptions
-    directives(): SnooDirective[]
-    processComment(comment: Comment, matches: RegExp[], client: Snoowrap): void
-    processSubmission(submission: Submission, matches: RegExp[], client: Snoowrap): void
-  }
+export interface SnooDirective {
+    subreddits: string[];
+    interval: string;
+    submissionMatcher?: RegExp[];
+    commentMatcher?: RegExp[];
 }
-
-export = SnooHooks;
+export interface SnooHook {
+    redditClientConfig(): SnoowrapOptions;
+    directives(): SnooDirective[];
+    processComment(comment: Comment, matches: RegExp[], client: Snoowrap): void;
+    processSubmission(submission: Submission, matches: RegExp[], client: Snoowrap): void;
+}
+export default class SnooHooks {
+    private jobs;
+    constructor(snooConfig?: SnooHooksConfig);
+    startHookDirectives(hooksDir: string): Promise<void>;
+    scheduleJobs(): void;
+    importHooksFiles(hooksDir: string): Promise<void>;
+    findHooksFiles(hooksDir: string): Promise<string[]>;
+}

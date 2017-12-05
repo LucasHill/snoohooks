@@ -33,7 +33,7 @@ class SnooJob {
 }
 
 export default class SnooHooks {
-  jobs: SnooJob[]
+  private jobs: SnooJob[]
 
   constructor(snooConfig: SnooHooksConfig = { hooksDir: 'hooks'}) {
     const hooksDir = snooConfig.hooksDir;
