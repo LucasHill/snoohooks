@@ -1,6 +1,6 @@
 {
   "name": "snoohooks",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "A straightforward bot scheduler/helper for reddit.",
   "main": "./dist/index.js",
   "repository": {
