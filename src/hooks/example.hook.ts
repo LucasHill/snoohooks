@@ -11,18 +11,21 @@ const exampleHook: SnooHook = {
 
   directives() {
     return [{
-      subreddits: ['portland'],
+      subreddits: ['testingground4bots'],
       interval: '0-59 * * * *',
-      commentMatcher: [/yamhill pub/]
+      commentMatcher: [/yamhill pub/i],
+      submissionMatcher: [/loud boom/i]
     }];
   },
 
   processComment(comment, matchers, client) {
-    console.log(comment);
+    comment.reply('My favorite bar!');
+    console.log(`Processed comment: ${comment.id}`);
   },
 
   processSubmission(submission, matchers, client) {
-    console.log(submission);
+    submission.reply('I heard it too!')
+    console.log(`Processed submission: ${submission.id}`)
   },
 };
 
